@@ -2,14 +2,7 @@
 #include <windows.h>
 #pragma comment(lib, "User32.lib")
 
-void NTAPI tls_callback(void *DllHandle, DWORD Reason, void *Reserved)
-{
-    if (Reason == DLL_PROCESS_ATTACH)
-    {
-        MessageBox(0, L"test", L"test", MB_ICONEXCLAMATION);
-        Sleep(1000);
-    }
-}
+void NTAPI tls_callback(void *DllHandle, DWORD Reason, void *Reserved);
 
 #ifdef _WIN64
      #pragma comment (linker, "/INCLUDE:_tls_used")  // See p. 1 below
@@ -32,6 +25,16 @@ EXTERN_C
 #else
 #pragma data_seg()
 #endif //_WIN64
+
+void NTAPI tls_callback(void *DllHandle, DWORD Reason, void *Reserved)
+{
+    if (Reason == DLL_PROCESS_ATTACH)
+    {
+        MessageBox(0, L"test", L"test", MB_ICONEXCLAMATION);
+        printf("TLS Callback Addresses:\n\tFunction Address: %p\n\tCRT Callback Address: %p\n", tls_callback, &tls_callback_func);
+        Sleep(1000);
+    }
+}
 
 int main(void)
 {

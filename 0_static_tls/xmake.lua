@@ -1,16 +1,32 @@
--- target("tls")
---     set_kind("binary")
---     add_files("tls.c")
---     add_defines( "UNICODE", "_UNICODE")
---     -- add_cxflags("/execution-charset:utf-8")
---     -- set_toolchains("vs")
+target("tls")
+    set_kind("binary")
+    add_files("tls.c")
+    add_defines( "UNICODE", "_UNICODE")
+
+    if is_plat("windows") then 
+        if is_mode("release") then
+            add_cxflags("-MD") 
+        elseif is_mode("debug") then
+            add_cxflags("-MDd") 
+        end
+    end
+    -- set_toolchains("vs")
 
 target("tls_clang")
     set_kind("binary")
     add_files("tls.c")
     add_defines( "UNICODE", "_UNICODE")
-    -- add_cxflags("/execution-charset:utf-8")
+    if is_plat("windows") then 
+        if is_mode("release") then
+            add_cxflags("-MD")
+        elseif is_mode("debug") then
+            add_cxflags("-MDd")
+        end
+    end
+    add_ldflags("-lmsvcrt")
+    -- add_ldflags("-nodefaultlib:libcmt")
     set_toolchains("clang")
+
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io

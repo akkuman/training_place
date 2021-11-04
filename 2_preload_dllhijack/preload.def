@@ -1,0 +1,8 @@
+LIBRARY
+EXPORTS
+_except_handler4_common=f__except_handler4_common
+memset=f_memset
+memmove=f_memmove
+memcmp=f_memcmp
+memcpy=f_memcpy
+__std_type_info_destroy_list=f___std_type_info_destroy_list

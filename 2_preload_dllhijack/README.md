@@ -2,12 +2,16 @@
 
 实现了文章 [红队开发 - 白加黑自动化生成器](https://mp.weixin.qq.com/s/MZY9S2yv12b6xFcT1hlnEQ) 中提到的 Pre-Load Dll 劫持 的 demo
 
+demo 中的 shellcode 作用是执行 calc.exe
+
 ## 尝试
 
 ```shell
 > xmake
 > build/windows/x86/release/inno_updater.exe
 ```
+
+成功的话会弹出计算器
 
 ## 随手记
 

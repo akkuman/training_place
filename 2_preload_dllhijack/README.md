@@ -2,6 +2,13 @@
 
 实现了文章 [红队开发 - 白加黑自动化生成器](https://mp.weixin.qq.com/s/MZY9S2yv12b6xFcT1hlnEQ) 中提到的 Pre-Load Dll 劫持 的 demo
 
+## 尝试
+
+```shell
+> xmake
+> build/windows/x86/release/inno_updater.exe
+```
+
 ## 随手记
 
 如果直接采用代码内定义memcpy等等导出函数，会报错 `error C2169: “memcpy”: 内部函数，不能定义`

